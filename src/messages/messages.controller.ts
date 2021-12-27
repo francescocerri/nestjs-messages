@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { identity } from 'rxjs';
+import { CreateMessageDto } from './dtos/create.message.dto';
 
 // class decorator
 @Controller('messages')
@@ -9,7 +9,8 @@ export class MessagesController {
   listMessages() {}
   @Post()
   // @Body argument decorator, estrarrà il body della richiesta
-  createMessage(@Body() body: any) {
+  // il type del body sarà il dto, che comprende anche le validazioni
+  createMessage(@Body() body: CreateMessageDto) {
     console.log(body);
   }
   @Get('/:id')
